@@ -1,10 +1,12 @@
-import { useState } from "react";
-import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
+import React, { useState } from 'react';
+import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 
 const CustomCheckbox = ({ checked, onPress }) => {
   return (
     <TouchableOpacity onPress={onPress} style={styles.checkboxContainer}>
-      <View style={[styles.checkbox, checked && styles.checked]}>{checked && <View style={styles.checkMark} />}</View>
+      <View style={[styles.checkbox, checked && styles.checked]}>
+        {checked && <View style={styles.checkMark} />}
+      </View>
     </TouchableOpacity>
   );
 };
@@ -21,7 +23,10 @@ const Task = ({ name, description, status, date }) => {
       </View>
 
       <View style={styles.statusContainer}>
-        <CustomCheckbox checked={checked} onPress={() => setChecked(!checked)} />
+        <CustomCheckbox
+          checked={checked}
+          onPress={() => setChecked(!checked)}
+        />
       </View>
     </View>
   );
@@ -29,12 +34,12 @@ const Task = ({ name, description, status, date }) => {
 
 const styles = StyleSheet.create({
   card: {
-    backgroundColor: "#ffffff",
+    backgroundColor: '#ffffff',
     borderRadius: 10,
     padding: 15,
     marginVertical: 10,
     marginHorizontal: 20,
-    shadowColor: "#000",
+    shadowColor: '#000',
     shadowOffset: {
       width: 0,
       height: 2,
@@ -42,8 +47,8 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.25,
     shadowRadius: 3.5,
     elevation: 5,
-    flexDirection: "row",
-    alignItems: "center",
+    flexDirection: 'row',
+    alignItems: 'center',
   },
   taskInfo: {
     flex: 1,
@@ -51,50 +56,50 @@ const styles = StyleSheet.create({
   },
   name: {
     fontSize: 18,
-    fontWeight: "bold",
+    fontWeight: 'bold',
     marginBottom: 5,
-    color: "#333",
+    color: '#333',
   },
   description: {
     fontSize: 14,
-    color: "#555",
+    color: '#555',
     marginBottom: 5,
   },
   date: {
     fontSize: 12,
-    color: "#888",
+    color: '#888',
   },
   statusContainer: {
-    flexDirection: "row",
-    alignItems: "center",
+    flexDirection: 'row',
+    alignItems: 'center',
   },
   checkboxContainer: {
     width: 30,
     height: 30,
-    justifyContent: "center",
-    alignItems: "center",
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   checkbox: {
     width: 30,
     height: 30,
     borderRadius: 30,
     borderWidth: 2,
-    borderColor: "#694fad",
-    alignItems: "center",
-    justifyContent: "center",
+    borderColor: '#6200ee',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   checked: {
-    backgroundColor: "#694fad",
+    backgroundColor: '#6200ee',
   },
   checkMark: {
-    width: 14,
-    height: 14,
-    backgroundColor: "#fff",
-    borderRadius: 14,
+    width: 15,
+    height: 15,
+    backgroundColor: '#fff',
+    borderRadius: 15,
   },
   strikeThrough: {
-    textDecorationLine: "line-through",
-    color: "#aaa",
+    textDecorationLine: 'line-through',
+    color: '#aaa',
   },
 });
 
