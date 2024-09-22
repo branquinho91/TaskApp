@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { Text, View, ScrollView, Pressable } from "react-native";
-import Task from "../components/Task";
-import NewTask from "../components/NewTask";
-import { tasks, today } from "../tasks/task";
+import TaskCard from "../components/Tasks/TaskCard";
+import NewTaskModal from "../components/Tasks/NewTaskModal";
+import { tasks, today } from "../components/Tasks/taskList";
 
 const TaskScreen = () => {
   const handlePress = () => {};
@@ -35,7 +35,7 @@ const TaskScreen = () => {
       {/* TaskList rendering */}
       <ScrollView>
         {tasks.map((task, index) => (
-          <Task key={index} name={task.name} description={task.description} status={task.status} date={task.date} />
+          <TaskCard key={index} name={task.name} description={task.description} status={task.status} date={task.date} />
         ))}
       </ScrollView>
     </>

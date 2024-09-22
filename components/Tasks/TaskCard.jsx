@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
+import { View, Text, Image, StyleSheet, TouchableOpacity } from "react-native";
 
 const CustomCheckbox = ({ checked, onPress }) => {
   return (
@@ -9,8 +9,10 @@ const CustomCheckbox = ({ checked, onPress }) => {
   );
 };
 
-const Task = ({ name, description, status, date }) => {
+const TaskCard = ({ name, description, status, date }) => {
   const [checked, setChecked] = useState(status === "Completed");
+  const [isHovered, setIsHovered] = useState(false);
+  const handlePress = () => {};
 
   return (
     <View style={styles.card}>
@@ -22,6 +24,9 @@ const Task = ({ name, description, status, date }) => {
 
       <View style={styles.statusContainer}>
         <CustomCheckbox checked={checked} onPress={() => setChecked(!checked)} />
+        <TouchableOpacity onPress={handlePress} onPressIn={() => setIsHovered(true)} onPressOut={() => setIsHovered(false)}>
+          <Image source={require("../../assets/trash-can.png")} style={[styles.deleteIcon, isHovered && styles.deleteIconHovered]} />
+        </TouchableOpacity>
       </View>
     </View>
   );
@@ -65,14 +70,7 @@ const styles = StyleSheet.create({
     color: "#888",
   },
   statusContainer: {
-    flexDirection: "row",
-    alignItems: "center",
-  },
-  checkboxContainer: {
-    width: 30,
-    height: 30,
-    justifyContent: "center",
-    alignItems: "center",
+    alignItems: "flex-start",
   },
   checkbox: {
     width: 30,
@@ -86,6 +84,14 @@ const styles = StyleSheet.create({
   checked: {
     backgroundColor: "#694fad",
   },
+  deleteIcon: {
+    width: 30,
+    height: 30,
+    marginTop: 16,
+  },
+  deleteIconHovered: {
+    opacity: 0.8,
+  },
   checkMark: {
     width: 14,
     height: 14,
@@ -98,4 +104,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Task;
+export default TaskCard;
