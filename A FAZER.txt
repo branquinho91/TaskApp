@@ -1,0 +1,3 @@
+Implementar ferramenta de busca com texto.
+Implementar funcionalidade para botão de excluir task
+Implementar funcionalidade para botão de Add New task

@@ -3,7 +3,7 @@ import { NavigationContainer } from "@react-navigation/native";
 import { SafeAreaView, StyleSheet, StatusBar } from "react-native";
 import { createMaterialBottomTabNavigator } from "@react-navigation/material-bottom-tabs";
 import Icon from "react-native-vector-icons/Ionicons";
-import TaskScreen from "./screens/TasksScreen";
+import TaskScreen from "./screens/TaskScreen";
 import MessagesScreen from "./screens/MessagesScreen";
 import LastActivityScreen from "./screens/LastActivityScreen";
 

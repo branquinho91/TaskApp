@@ -4,7 +4,7 @@ const today = new Date().toLocaleDateString("en-US", {
   day: "2-digit",
 });
 
-const tasks = [
+const taskList = [
   {
     name: "Grocery Shopping",
     description: "Make a list and go to the store.",
@@ -49,4 +49,4 @@ const tasks = [
   },
 ];
 
-export { tasks, today };
+export { taskList, today };

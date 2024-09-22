@@ -4,15 +4,22 @@ import { View, Text, Image, StyleSheet, TouchableOpacity } from "react-native";
 const CustomCheckbox = ({ checked, onPress }) => {
   return (
     <TouchableOpacity onPress={onPress} style={styles.checkboxContainer}>
-      <View style={[styles.checkbox, checked && styles.checked]}>{checked && <View style={styles.checkMark} />}</View>
+      <View style={[styles.checkbox, checked && styles.checked]}>
+        {checked && <View style={styles.checkMark} />}
+      </View>
     </TouchableOpacity>
   );
 };
 
-const TaskCard = ({ name, description, status, date }) => {
+const TaskCard = ({ name, description, status, date, onStatusChange }) => {
   const [checked, setChecked] = useState(status === "Completed");
   const [isHovered, setIsHovered] = useState(false);
-  const handlePress = () => {};
+
+  const handlePress = () => {
+    const newStatus = checked ? "Pending" : "Completed";
+    setChecked(!checked);
+    onStatusChange(newStatus);
+  };
 
   return (
     <View style={styles.card}>
@@ -23,8 +30,8 @@ const TaskCard = ({ name, description, status, date }) => {
       </View>
 
       <View style={styles.statusContainer}>
-        <CustomCheckbox checked={checked} onPress={() => setChecked(!checked)} />
-        <TouchableOpacity onPress={handlePress} onPressIn={() => setIsHovered(true)} onPressOut={() => setIsHovered(false)}>
+        <CustomCheckbox checked={checked} onPress={handlePress} />
+        <TouchableOpacity onPressIn={() => setIsHovered(true)} onPressOut={() => setIsHovered(false)}>
           <Image source={require("../../assets/trash-can.png")} style={[styles.deleteIcon, isHovered && styles.deleteIconHovered]} />
         </TouchableOpacity>
       </View>
@@ -87,7 +94,7 @@ const styles = StyleSheet.create({
   deleteIcon: {
     width: 30,
     height: 30,
-    marginTop: 16,
+    marginTop: 22,
   },
   deleteIconHovered: {
     opacity: 0.8,
